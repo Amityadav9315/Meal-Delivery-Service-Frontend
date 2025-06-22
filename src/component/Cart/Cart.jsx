@@ -41,6 +41,10 @@ const Cart = () => {
 
             </div>
             </section>
+            <Divider orientation='vertical' flexItem/>
+            <section className='lg:w-[70%]'>
+              
+            </section>
         </main>
     </div>
   )
