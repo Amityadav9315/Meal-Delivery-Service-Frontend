@@ -3,7 +3,7 @@ import IconButton from '@mui/material/IconButton';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import Chip from '@mui/material/Chip';
-import labelIcon from '@mui/icons-material/label';
+
 export const CartItem = () => {
   return (
     <div className='px-5'>
@@ -45,7 +45,7 @@ export const CartItem = () => {
 
         </div>
         <div className='pt-3 space-x-2'>
-            {[1,1,1,].map((item)=><Chip label={bread}/>)}
+            {[1,1,1,].map((item)=><Chip label={"bread"}/>)}
 
         </div>
 
