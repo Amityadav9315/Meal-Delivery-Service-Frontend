@@ -42,8 +42,13 @@ const Cart = () => {
             </div>
             </section>
             <Divider orientation='vertical' flexItem/>
-            <section className='lg:w-[70%]'>
-              
+            <section className='lg:w-[70%] flex justify-center px-5 pb-10 lg:pb-0'>
+             <div>
+              <h1 className='text-center font-semibold text-2xl py-10'>Choose Delivery Address</h1>
+              <div className='flex gap-5 flex-wrap justify-center'>
+
+              </div>
+             </div>
             </section>
         </main>
     </div>
