@@ -28,9 +28,15 @@ const Cart = () => {
                    <p>GST and Restaurant Charges</p>
                    <p>₹33</p>
                    </div>
+                   <Divider/>
                    
 
 
+              </div>
+              <div className='flex justify-between text-gray-400'>
+               <p>Total pay</p>
+                <p>₹3300</p>
+             
               </div>
 
             </div>
