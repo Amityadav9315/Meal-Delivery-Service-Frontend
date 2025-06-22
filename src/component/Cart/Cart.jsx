@@ -13,7 +13,25 @@ const Cart = () => {
             <Divider/>
             <div className='billDetails px-5 text-sm'>
 
-              <p>Bill Details</p>
+              <p className='font-extralight py-5'>Bill Details</p>
+              <div className='space-y-3'>
+                <div className='flex justify-between text-gray-400'>
+                   <p>Item Total</p>
+                   <p>₹599</p>
+                </div>
+                <div className='flex justify-between text-gray-400'>
+                   <p>Deliver Food</p>
+                   <p>₹21</p>
+                   </div>
+
+                   <div className='flex justify-between text-gray-400'>
+                   <p>GST and Restaurant Charges</p>
+                   <p>₹33</p>
+                   </div>
+                   
+
+
+              </div>
 
             </div>
             </section>
