@@ -12,7 +12,7 @@ const demo=[
     {
         category:"Nuts & seeds",
         ingredients:["Cashews"]
-        bdghlkfdhlk
+        fegfbkbkl
     },
     {
          category:"Protein",
