@@ -3,6 +3,9 @@ import React from 'react'
 import { CartItem } from './CartItem'
 const items=[1,1]
 const Cart = () => {
+  const createOrderUsingSelectedAddress=()=>{
+    
+  }
   return (
     <div>
         <main className='lg:flex justify-between'>
@@ -46,7 +49,8 @@ const Cart = () => {
              <div>
               <h1 className='text-center font-semibold text-2xl py-10'>Choose Delivery Address</h1>
               <div className='flex gap-5 flex-wrap justify-center'>
-
+                {[1,1,1,1,1].map((item)=><AddressCard handleSelectAddress={createOrderUsingSelectedAddress} item={item} showButton={true}/>)}
+                 
               </div>
              </div>
             </section>
