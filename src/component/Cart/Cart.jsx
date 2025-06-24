@@ -151,6 +151,7 @@ const Cart = () => {
           error={!ErrorMessage("streetAddress")}
           helperText={
             <ErrorMessage>
+              {(msg)=> <span className='text-red-600'>{msg}</span>}
               
             </ErrorMessage>
           }
