@@ -2,61 +2,52 @@ import React from 'react';
 import Divider from '@mui/material/Divider';
 import { AddressCart } from './AddressCart';
 import { CartItem } from './CartItem';
-import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
 import AddLocationIcon from '@mui/icons-material/AddLocation';
 import Card from '@mui/material/Card';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-import StyleIcon from '@mui/icons-material/Style';
-import * as Yup from "yup"
-import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
-import { ErrorMessage, Field } from 'formik';
+import { Formik, Form, Field } from 'formik';
 
-const style = {
+const modalStyle = {
   position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
+  width: '90%',
+  maxWidth: 400,
   bgcolor: 'background.paper',
-  outline:"none",
+  outline: 'none',
   boxShadow: 24,
   p: 4,
 };
 
-const initalialValues={
-  streetAddresss:"",
-  state:"",
-  pincode:"",
-  city:""
-}
-const validationSchema=Yup.object.shape({
-  streetAddresss:Yup.string().required("Street address is required"),
-  state:Yup.string().required("State is required"),
-  pincode:Yup.string().required("pincode is required"),
-  city:Yup.string().required("city address is required")
-
-
-})
-const items = [1, 1];
+const initialValues = {
+  streetAddress: '',
+  state: '',
+  city: '',
+  pincode: '',
+};
 
 const Cart = () => {
+  const [open, setOpen] = React.useState(false);
+  const items = [1, 1];
+
+  const handleOpenAddressModel = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   const createOrderUsingSelectedAddress = (selectedAddress) => {
-    // Replace this with actual order creation logic
     console.log('Selected Address:', selectedAddress);
     alert('Order created using selected address!');
   };
-   const handleOpenAddressModel=()=> setOpen(true);
-   const [open, setOpen] = React.useState(false);
- 
-  const handleClose = () => setOpen(false);
-  const handleSubmit=()=>{
 
-  }
-
+  const handleSubmit = (values) => {
+    console.log('Form Submitted:', values);
+    alert('Address submitted!');
+    handleClose();
+  };
 
   return (
     <>
@@ -109,67 +100,88 @@ const Cart = () => {
                   showButton={true}
                 />
               ))}
+
+              {/* Add New Address Card */}
               <Card className='flex gap-5 w-64 p-5'>
-      <AddLocationIcon />
-      <div className='space-y-3 text-gray-500'>
-        <h1 className='font-semibold text-lg text-white'>Add new Address</h1>
-      
-          <Button
-            variant='outlined'
-            fullWidth
-            onClick={handleOpenAddressModel}
-          >
-            Add
-          </Button>
-        
-      </div>
-    </Card>
+                <AddLocationIcon />
+                <div className='space-y-3 text-gray-500'>
+                  <h1 className='font-semibold text-lg text-white'>Add new Address</h1>
+                  <Button
+                    variant='outlined'
+                    fullWidth
+                    onClick={handleOpenAddressModel}
+                  >
+                    Add
+                  </Button>
+                </div>
+              </Card>
             </div>
           </div>
         </section>
       </main>
+
+      {/* Modal for Address Form */}
       <Modal
-  open={open}
-  onClose={handleClose}
-  aria-labelledby="modal-modal-title"
-  aria-describedby="modal-modal-description"
->
-  <Box sx={style}>
-    <Formik initalValues={initalialValues}
-    validationSchema={validationSchema} 
-    onSubmit={handleSubmit}>
-      <Grid  container spacing={2} >
-
-        <Grid  item xs={12}>
-
-          <Field
-          as={TextField}
-          name="streetAddress"
-          label="Street Address"
-          fullWidth
-          variant="outlined"
-          error={!ErrorMessage("streetAddress")}
-          helperText={
-            <ErrorMessage>
-              {(msg)=> <span className='text-red-600'>{msg}</span>}
-              
-            </ErrorMessage>
-          }
-
-          />
-
-        </Grid>
-        
-        
-      
-
-      </Grid>
-
-
-    </Formik>
-   
-  </Box>
-</Modal>
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={modalStyle}>
+          <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+            <Form style={{ width: '100%' }}>
+              <Grid container spacing={2} sx={{ width: '100%' }}>
+                <Grid item xs={12}>
+                  <Field
+                    as={TextField}
+                    name="streetAddress"
+                    label="Street Address"
+                    fullWidth
+                    variant="outlined"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <Field
+                    as={TextField}
+                    name="state"
+                    label="State"
+                    fullWidth
+                    variant="outlined"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <Field
+                    as={TextField}
+                    name="city"
+                    label="City"
+                    fullWidth
+                    variant="outlined"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <Field
+                    as={TextField}
+                    name="pincode"
+                    label="Pincode"
+                    fullWidth
+                    variant="outlined"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <Button
+                    fullWidth
+                    variant="contained"
+                    type="submit"
+                    color="primary"
+                  >
+                    Deliver Here
+                  </Button>
+                </Grid>
+              </Grid>
+            </Form>
+          </Formik>
+        </Box>
+      </Modal>
     </>
   );
 };
