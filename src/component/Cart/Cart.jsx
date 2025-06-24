@@ -4,7 +4,9 @@ import { AddressCart } from './AddressCart';
 import { CartItem } from './CartItem';
 import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
 import AddLocationIcon from '@mui/icons-material/AddLocation';
-const items = [1, 1]; // Sample cart items
+import Card from '@mui/material/Card';
+import Button from '@mui/material/Button';
+const items = [1, 1];
 
 const Cart = () => {
   const createOrderUsingSelectedAddress = (selectedAddress) => {
@@ -12,6 +14,9 @@ const Cart = () => {
     console.log('Selected Address:', selectedAddress);
     alert('Order created using selected address!');
   };
+   const handleOpenAddressModel=()=>{
+
+   }
 
   return (
     <div>
@@ -67,19 +72,16 @@ const Cart = () => {
               <Card className='flex gap-5 w-64 p-5'>
       <AddLocationIcon />
       <div className='space-y-3 text-gray-500'>
-        <h1 className='font-semibold text-lg text-white'>Home</h1>
-        <p>
-          Ghazibad SanajayNagar Sectoe 23 Uttar Pradesh
-        </p>
-        {showButton && (
+        <h1 className='font-semibold text-lg text-white'>Add new Address</h1>
+      
           <Button
             variant='outlined'
             fullWidth
-            onClick={() => handleSelectAddress(item)}
+            onClick={handleOpenAddressModel}
           >
-            Select
+            Add
           </Button>
-        )}
+        
       </div>
     </Card>
             </div>
