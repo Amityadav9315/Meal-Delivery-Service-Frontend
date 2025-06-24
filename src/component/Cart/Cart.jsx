@@ -10,6 +10,10 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import StyleIcon from '@mui/icons-material/Style';
 import * as Yup from "yup"
+import Container from '@mui/material/Container'
+import Grid from '@mui/material/Grid';
+import TextField from '@mui/material/TextField';
+import { ErrorMessage, Field } from 'formik';
 
 const style = {
   position: 'absolute',
@@ -30,6 +34,11 @@ const initalialValues={
   city:""
 }
 const validationSchema=Yup.object.shape({
+  streetAddresss:Yup.string().required("Street address is required"),
+  state:Yup.string().required("State is required"),
+  pincode:Yup.string().required("pincode is required"),
+  city:Yup.string().required("city address is required")
+
 
 })
 const items = [1, 1];
@@ -129,6 +138,31 @@ const Cart = () => {
     <Formik initalValues={initalialValues}
     validationSchema={validationSchema} 
     onSubmit={handleSubmit}>
+      <Grid  container spacing={2} >
+
+        <Grid  item xs={12}>
+
+          <Field
+          as={TextField}
+          name="streetAddress"
+          label="Street Address"
+          fullWidth
+          variant="outlined"
+          error={!ErrorMessage("streetAddress")}
+          helperText={
+            <ErrorMessage>
+              
+            </ErrorMessage>
+          }
+
+          />
+
+        </Grid>
+        
+        
+      
+
+      </Grid>
 
 
     </Formik>
