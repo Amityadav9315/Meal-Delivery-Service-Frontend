@@ -15,11 +15,16 @@ const Cart = () => {
     alert('Order created using selected address!');
   };
    const handleOpenAddressModel=()=>{
+    
 
    }
+   const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
 
   return (
-    <div>
+    <>
       <main className='lg:flex justify-between'>
         {/* Left Section: Cart Items and Billing */}
         <section className='lg:w-[30%] space-y-6 lg:main-h-screen pt-10'>
@@ -88,7 +93,17 @@ const Cart = () => {
           </div>
         </section>
       </main>
-    </div>
+      <Modal
+  open={open}
+  onClose={handleClose}
+  aria-labelledby="modal-modal-title"
+  aria-describedby="modal-modal-description"
+>
+  <Box sx={style}>
+   
+  </Box>
+</Modal>
+    </>
   );
 };
 
