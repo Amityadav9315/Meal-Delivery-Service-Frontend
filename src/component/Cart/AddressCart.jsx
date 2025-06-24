@@ -14,7 +14,7 @@ export const AddressCart = ({ item, showButton, handleSelectAddress }) => {
         </p>
         {showButton && (
           <Button
-            variant='contained'
+            variant='outlined'
             fullWidth
             onClick={() => handleSelectAddress(item)}
           >
