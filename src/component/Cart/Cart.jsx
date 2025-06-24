@@ -9,6 +9,7 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import StyleIcon from '@mui/icons-material/Style';
+import * as Yup from "yup"
 
 const style = {
   position: 'absolute',
@@ -22,6 +23,15 @@ const style = {
   p: 4,
 };
 
+const initalialValues={
+  streetAddresss:"",
+  state:"",
+  pincode:"",
+  city:""
+}
+const validationSchema=Yup.object.shape({
+
+})
 const items = [1, 1];
 
 const Cart = () => {
@@ -34,6 +44,9 @@ const Cart = () => {
    const [open, setOpen] = React.useState(false);
  
   const handleClose = () => setOpen(false);
+  const handleSubmit=()=>{
+
+  }
 
 
   return (
@@ -113,6 +126,12 @@ const Cart = () => {
   aria-describedby="modal-modal-description"
 >
   <Box sx={style}>
+    <Formik initalValues={initalialValues}
+    validationSchema={validationSchema} 
+    onSubmit={handleSubmit}>
+
+
+    </Formik>
    
   </Box>
 </Modal>
