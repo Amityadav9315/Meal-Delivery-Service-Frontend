@@ -9,6 +9,7 @@ import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import EventIcon from '@mui/icons-material/Event';
 import LogoutIcon from '@mui/icons-material/Logout';
 import AddReactionIcon from '@mui/icons-material/AddReaction';
+import Divider from '@mui/material/Divider';
 
 const menu = [
   { title: 'Orders', icon: <ShoppingBagIcon /> },
@@ -32,23 +33,15 @@ const ProfileNavigation = ({ open, handleClose }) => {
         anchor='left'
         sx={{ zIndex: 1300 }}
       >
-        <div className='w-[50vw] lg:w-[20vw] h-[100vh] flex flex-col justify-center text-xl gap-8 pt-16'>
+        <div className='w-[50vw] lg:w-[20vw] h-[100vh] flex flex-col justify-start text-xl gap-2 pt-16'>
           {menu.map((item, idx) => (
-            <div key={idx} className='flex items-center gap-4 pl-6'>
-                {menu.map((item)=><>
-                <div className='px-5 flex item-centre space-x-5 cursor-pointer'>
-                    {item.icon}
-                    <span>
-                        {item.title}
-                    </span>
-                    </div>
-                    {i!==menu.length-1 && <Divider/>}
-
-                    
-                    </>)}
-              {item.icon}
-              {item.title}
-            </div>
+            <React.Fragment key={idx}>
+              <div className='px-5 py-2 flex items-center space-x-5 cursor-pointer hover:bg-zinc-800 rounded-md transition'>
+                {item.icon}
+                <span>{item.title}</span>
+              </div>
+              {idx !== menu.length - 1 && <Divider />}
+            </React.Fragment>
           ))}
         </div>
       </Drawer>
