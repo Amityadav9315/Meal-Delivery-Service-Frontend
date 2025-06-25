@@ -6,10 +6,11 @@ import { pink } from '@mui/material/colors';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Badge from '@mui/material/Badge';
 import "./Navbar.css"
+import Box from '@mui/material/Box';
 export const Navbar =() => {
 
     return (
-        <div   className='px-5 z-[100] py-[.8rem] bg-[#e91e63] lg:px-20 flex justify-between'>
+        <Box  sx={{zIndex:100}} className='px-5 z-[100] py-[.8rem] bg-[#e91e63] lg:px-20 flex justify-between'>
 
             
                 <div className='lg:mr-10 cursor-pointer flex items-center space-x-4'>
@@ -43,7 +44,7 @@ export const Navbar =() => {
                         </div>
 
                      </div>
-                </div> 
+                </Box> 
             
             
         

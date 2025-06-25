@@ -31,7 +31,7 @@ const ProfileNavigation = ({ open, handleClose }) => {
         onClose={handleClose}
         open={isSmallScreen ? open :true}
         anchor='left'
-        sx={{ zIndex: -1 }}
+        sx={{ zIndex: -1, position:"sticky"}}
       >
         <div className='w-[50vw] lg:w-[20vw] h-[100vh] flex flex-col justify-start text-xl gap-2 '>
           {menu.map((item, idx) => (
