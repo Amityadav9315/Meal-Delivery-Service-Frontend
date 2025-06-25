@@ -3,7 +3,6 @@ import Drawer from '@mui/material/Drawer';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import HomeIcon from '@mui/icons-material/Home';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import EventIcon from '@mui/icons-material/Event';
@@ -25,27 +24,32 @@ const ProfileNavigation = ({ open, handleClose }) => {
   const isSmallScreen = useMediaQuery('(max-width:900px)');
 
   return (
-    <div>
-      <Drawer
-        variant={isSmallScreen ? 'temporary' : 'permanent'}
-        onClose={handleClose}
-        open={isSmallScreen ? open :true}
-        anchor='left'
-        sx={{ zIndex: -1, position:"sticky"}}
-      >
-        <div className='w-[50vw] lg:w-[20vw] h-[100vh] flex flex-col justify-start text-xl gap-2 '>
-          {menu.map((item, idx) => (
-            <React.Fragment key={idx}>
-              <div className='px-5 py-2 flex items-center space-x-5 cursor-pointer hover:bg-zinc-800 rounded-md transition'>
-                {item.icon}
-                <span>{item.title}</span>
-              </div>
-              {idx !== menu.length - 1 && <Divider />}
-            </React.Fragment>
-          ))}
-        </div>
-      </Drawer>
-    </div>
+    <Drawer
+      variant={isSmallScreen ? 'temporary' : 'permanent'}
+      onClose={handleClose}
+      open={isSmallScreen ? open : true}
+      anchor="left"
+      sx={{
+        zIndex: 1200, // lower than navbar
+        '& .MuiDrawer-paper': {
+          top: '64px', // adjust if navbar height is different
+          height: 'calc(100% - 64px)',
+          width: isSmallScreen ? '70vw' : '20vw',
+        },
+      }}
+    >
+      <div className="h-full flex flex-col justify-start text-xl gap-2 bg-black text-white">
+        {menu.map((item, idx) => (
+          <React.Fragment key={idx}>
+            <div className="px-5 py-2 flex items-center space-x-5 cursor-pointer hover:bg-zinc-800 rounded-md transition">
+              {item.icon}
+              <span>{item.title}</span>
+            </div>
+            {idx !== menu.length - 1 && <Divider className="bg-gray-700" />}
+          </React.Fragment>
+        ))}
+      </div>
+    </Drawer>
   );
 };
 
