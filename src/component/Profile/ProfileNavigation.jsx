@@ -18,9 +18,24 @@ const menu=[
     {title:"Orders",icon:<LogoutIcon/>},
 
 ]
-const ProfileNavigation = () => {
+export const ProfileNavigation = ({open,handleClose}) => {
+
+    const isSmallScreen=useMediaQuery("(max-width:1080)")
+    
   return (
     <div>
+        <Drawer  varient={isSmallScreen ? "temporary" : "permanent" }
+        onClose={handleClose}
+         open={open} 
+         anchor='left'
+          sx={{zIndex}}
+          >
+            <div className='w-[50vw] lg:w-[20vw] h-[100vh] flex flex-col
+            justify-center text-xl gap-8 pt-16'>
+
+            </div>
+
+        </Drawer>
 
     </div>
   )
