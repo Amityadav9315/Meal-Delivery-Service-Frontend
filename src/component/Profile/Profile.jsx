@@ -1,4 +1,5 @@
 import React from 'react'
+import ProfileNavigation from './ProfileNavigation'
 
 const Profile = () => {
   return (
@@ -9,7 +10,9 @@ const Profile = () => {
 
         </div>
         <div className='lg:w-[80%]'>
-            
+       
+             
+
 
         </div>
 
