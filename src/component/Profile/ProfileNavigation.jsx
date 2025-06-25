@@ -22,18 +22,18 @@ const menu = [
 ];
 
 const ProfileNavigation = ({ open, handleClose }) => {
-  const isSmallScreen = useMediaQuery('(min-width:900px)');
+  const isSmallScreen = useMediaQuery('(max-width:900px)');
 
   return (
     <div>
       <Drawer
         variant={isSmallScreen ? 'temporary' : 'permanent'}
         onClose={handleClose}
-        open={open}
+        open={isSmallScreen ? open :true}
         anchor='left'
         sx={{ zIndex: -1 }}
       >
-        <div className='w-[50vw] lg:w-[20vw] h-[100vh] flex flex-col justify-start text-xl gap-2 pt-16'>
+        <div className='w-[50vw] lg:w-[20vw] h-[100vh] flex flex-col justify-start text-xl gap-2 '>
           {menu.map((item, idx) => (
             <React.Fragment key={idx}>
               <div className='px-5 py-2 flex items-center space-x-5 cursor-pointer hover:bg-zinc-800 rounded-md transition'>
