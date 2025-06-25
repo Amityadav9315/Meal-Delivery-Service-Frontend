@@ -22,7 +22,7 @@ const menu = [
 ];
 
 const ProfileNavigation = ({ open, handleClose }) => {
-  const isSmallScreen = useMediaQuery('(max-width:1080px)');
+  const isSmallScreen = useMediaQuery('(min-width:900px)');
 
   return (
     <div>
@@ -31,7 +31,7 @@ const ProfileNavigation = ({ open, handleClose }) => {
         onClose={handleClose}
         open={open}
         anchor='left'
-        sx={{ zIndex: 1300 }}
+        sx={{ zIndex: -1 }}
       >
         <div className='w-[50vw] lg:w-[20vw] h-[100vh] flex flex-col justify-start text-xl gap-2 pt-16'>
           {menu.map((item, idx) => (
