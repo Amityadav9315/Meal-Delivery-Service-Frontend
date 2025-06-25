@@ -35,6 +35,17 @@ const ProfileNavigation = ({ open, handleClose }) => {
         <div className='w-[50vw] lg:w-[20vw] h-[100vh] flex flex-col justify-center text-xl gap-8 pt-16'>
           {menu.map((item, idx) => (
             <div key={idx} className='flex items-center gap-4 pl-6'>
+                {menu.map((item)=><>
+                <div className='px-5 flex item-centre space-x-5 cursor-pointer'>
+                    {item.icon}
+                    <span>
+                        {item.title}
+                    </span>
+                    </div>
+                    {i!==menu.length-1 && <Divider/>}
+
+                    
+                    </>)}
               {item.icon}
               {item.title}
             </div>
