@@ -11,6 +11,11 @@ const Profile = () => {
 
         </div>
         <div className='lg:w-[80%]'>
+
+          <Routes>
+            <Route path='/' element={<userprofile/>}
+            </Route>
+          </Routes>
        
              
 
