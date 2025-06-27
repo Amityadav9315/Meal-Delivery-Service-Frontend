@@ -25,8 +25,8 @@ const ProfileNavigation = ({ open, handleClose }) => {
   const isSmallScreen = useMediaQuery('(max-width:900px)');
   const navigate=useNavigate(); 
 
-  const handleNavigate=()=>{
-     navigate(`/my-profile/${item.title.toLowerCase}`)
+  const handleNavigate=(item)=>{
+     navigate(`/my-profile/${item.title.toLowerCase()}`)
 
   }
 
@@ -48,7 +48,7 @@ const ProfileNavigation = ({ open, handleClose }) => {
       <div className="h-full flex flex-col justify-start text-xl gap-2 bg-black text-white">
         {menu.map((item, idx) => (
           <React.Fragment key={idx}>
-            <div className="px-5 py-2 flex items-center space-x-5 cursor-pointer hover:bg-zinc-800 rounded-md transition">
+            <div onClick={()=>handleNavigate(item)} className="px-5 py-2 flex items-center space-x-5 cursor-pointer hover:bg-zinc-800 rounded-md transition">
               {item.icon}
               <span>{item.title}</span>
             </div>
