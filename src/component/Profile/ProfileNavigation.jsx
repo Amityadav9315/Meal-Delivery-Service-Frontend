@@ -9,6 +9,7 @@ import EventIcon from '@mui/icons-material/Event';
 import LogoutIcon from '@mui/icons-material/Logout';
 import AddReactionIcon from '@mui/icons-material/AddReaction';
 import Divider from '@mui/material/Divider';
+import { useNavigate } from 'react-router-dom';
 
 const menu = [
   { title: 'Orders', icon: <ShoppingBagIcon /> },
@@ -22,6 +23,12 @@ const menu = [
 
 const ProfileNavigation = ({ open, handleClose }) => {
   const isSmallScreen = useMediaQuery('(max-width:900px)');
+  const navigate=useNavigate(); 
+
+  const handleNavigate=()=>{
+     navigate(`/my-profile/${item.title.toLowerCase}`)
+
+  }
 
   return (
     <Drawer
