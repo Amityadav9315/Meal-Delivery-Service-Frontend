@@ -3,7 +3,9 @@ import ProfileNavigation from './ProfileNavigation';
 import { Route, Routes } from 'react-router-dom';
 import UserProfile from './UserProfile';
 import Orders from './Orders';
-import Adderss from './Adderss';
+import Adderss from './Adderss'; // Note: Consider renaming to Address for clarity
+import Favorites from './Favorites';
+import Events from './Events'; // ✅ Correct usage
 
 const Profile = () => {
   const [openSideBar, setOpenSideBar] = useState(false);
@@ -15,10 +17,11 @@ const Profile = () => {
       </div>
       <div className='lg:w-[80%]'>
         <Routes>
-          
-          <Route path='/' element={<UserProfile/>} />
-          <Route path='/orders' element={<Orders/>} />
-          <Route path='/address' element={<Adderss/>} />
+          <Route path='/' element={<UserProfile />} />
+          <Route path='/orders' element={<Orders />} />
+          <Route path='/address' element={<Adderss />} />
+          <Route path='/favorites' element={<Favorites />} />
+          <Route path='/events' element={<Events />} />
         </Routes>
       </div>
     </div>
