@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import ProfileNavigation from './ProfileNavigation';
 import { Route, Routes } from 'react-router-dom';
 import UserProfile from './UserProfile';
-import Orders from './Orders'; // Note: Consider renaming to Address for clarity
+import Orders from './Orders'; 
 import Favorites from './Favorites';
-import Events from './Events'; // ✅ 
+import Events from './Events'; 
 import Address from './Address';
 
 const Profile = () => {
