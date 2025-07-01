@@ -28,7 +28,7 @@ const EventCard = () => {
                 <p className='text-sm text-red-600'>February 16,2025 12:00 AM</p>
             </div>
          </CardContent>
-    {false &&    <CardActions>
+    {true &&    <CardActions>
             <IconButton>
            <DeleteIcon/>
             </IconButton>
