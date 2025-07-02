@@ -11,7 +11,7 @@ import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import { Formik, Form, Field } from 'formik';
 
-const modalStyle = {
+export const modalStyle = {
   position: 'absolute',
   top: '50%',
   left: '50%',
