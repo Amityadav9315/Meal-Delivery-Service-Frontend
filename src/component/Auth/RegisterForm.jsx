@@ -17,8 +17,11 @@ const initialValues={
 }
 const RegisterForm = () => {
    const navigate=useNavigate()
+    const dispatch=useDispatch()
+    
   const handleSubmit=(values)=>{
     console.log("form values",values)
+    dispatch(registerUser({userData:values,navigate}))
   };
   return (
     <div>
@@ -51,6 +54,7 @@ const RegisterForm = () => {
                                 fullWidth
                                 variant="outlined"
                                 margin="normal"
+                                type="password"
                               />
                     
   <Field

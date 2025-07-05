@@ -1,5 +1,5 @@
 import { isPresentInFavorites } from "../../config/logic"
-import { ADD_TO_FAVORITE_REQUEST, ADD_TO_FAVORITE_SUCCESS, GET_USER_REQUEST, LOGIN_REQUEST, LOGIN_SUCCESS, REGISTER_FAILURE, REGISTER_REQUEST, REGISTER_SUCCESS } from "./ActionTypes"
+import { ADD_TO_FAVORITE_FAILURE, ADD_TO_FAVORITE_REQUEST, ADD_TO_FAVORITE_SUCCESS, GET_USER_FAILURE, GET_USER_REQUEST, LOGIN_REQUEST, LOGIN_SUCCESS, REGISTER_FAILURE, REGISTER_REQUEST, REGISTER_SUCCESS } from "./ActionTypes"
 
 const initialState={
 
@@ -36,9 +36,9 @@ const initialState={
                     }
                     
                     case REGISTER_FAILURE:
-            case LOGIN_REGISTER_FAILURE:
-        case GET_USER_REGISTER_FAILURE:
-            case ADD_TO_FAVORITE_REGISTER_FAILURE:
+            case REGISTER_FAILURE:
+        case GET_USER_FAILURE:
+            case ADD_TO_FAVORITE_FAILURE:
                 return  {...state,isLoading:false,error:action.payload,success:null}
 
                     default:
