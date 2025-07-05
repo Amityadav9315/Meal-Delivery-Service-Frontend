@@ -1,5 +1,5 @@
 import axios from "axios"
-import { ADD_TO_FAVORITE_REQUEST, GET_USER_REQUEST, REGISTER_REQUEST, REGISTER_SUCCESS } from "./ActionTypes"
+import { ADD_TO_FAVORITE_REQUEST, ADD_TO_FAVORITE_SUCCESS, GET_USER_REQUEST, LOGOUT, REGISTER_REQUEST, REGISTER_SUCCESS } from "./ActionTypes"
 import { api, API_URL } from "../../config/api"
 
 export const registerUser=(reqData)=>async(dispatch)=>{
@@ -57,7 +57,7 @@ export const getUser=(jwt)=>async(dispatch)=>{
             }
         })
         
-        dispatch({type:LOGIN_SUCCESS,payload:data.jwt})
+        dispatch({type:LOGIN_SUCCESS,payload:data.jwt.data})
 
         console.log("user profile",data)
     }
@@ -78,9 +78,25 @@ export const addToFavorite=(jwt,restaurantId)=>async(dispatch)=>{
             }
         })
         
-        dispatch({type:LOGIN_SUCCESS,payload:data.jwt})
+        dispatch({type:ADD_TO_FAVORITE_SUCCESS,payload:data.jwt})
 
-        console.log("user profile",data)
+        console.log("added to favorite",data)
+    }
+    catch(error)  {
+        console.log("error",error)
+    }
+}
+
+
+export const logout=()=>async(dispatch)=>{
+
+    dispatch({type:ADD_TO_FAVORITE_REQUEST})
+    try{
+       
+        
+        dispatch({type:LOGOUT})
+
+        console.log("logout success",data)
     }
     catch(error)  {
         console.log("error",error)
