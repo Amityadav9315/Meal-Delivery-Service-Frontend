@@ -8,6 +8,8 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
+import { useDispatch } from 'react-redux';
+import { registerUser } from '../State/Authentication/Action';
 const initialValues={
   fullName:"",
   email:"",

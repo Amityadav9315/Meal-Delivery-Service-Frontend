@@ -17,10 +17,10 @@ import { getUser } from './component/State/Authentication/Action';
 function App() {
     const dispatch=useDispatch()
     const jwt=localStorage.getItem("jwt")
-    const {auth} =useSelector(store=>store)
+    const {auth}=useSelector(store=>store)
     useEffect(()=>{
-      dispatch(getUser(jwt))
-    },[])
+      dispatch(getUser(auth.jwt || jwt))
+    },[auth.jwt])
       
     
 

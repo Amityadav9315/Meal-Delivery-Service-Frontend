@@ -10,7 +10,7 @@ import CarouselItem from './CarouselItem';
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 5,git
+    slidesToShow: 5,
     slidesToScroll: 1,
     autoplay:true,
     autoplaySpeed:2000,
