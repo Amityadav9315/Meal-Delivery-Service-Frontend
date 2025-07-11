@@ -4,7 +4,7 @@ import { thunk } from "redux-thunk";
 
 const rooteReducer=combineReducers({
     auth:authReducer,
-})
+});
 
 
 
