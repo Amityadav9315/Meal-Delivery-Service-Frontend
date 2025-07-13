@@ -15,128 +15,93 @@ export const registerUser = (reqData) => async (dispatch) => {
     dispatch({ type: REGISTER_REQUEST });
     try {
         const { data } = await axios.post(`${API_URL}/auth/signup`, reqData.userData);
-        
-        if (data.jwt) {
-            localStorage.setItem("jwt", data.jwt);
-            
-            // Dispatch register success with both token and user data
-            dispatch({ 
-                type: REGISTER_SUCCESS, 
-                payload: {
-                    token: data.jwt,
-                    user: data.user // Make sure your backend returns user data
-                }
-            });
-            
-            // Fetch complete user profile after registration
-            await dispatch(getUser(data.jwt));
-            
-            // Navigation based on role
-            if (data.role === "ROLE_RESTURANT_OWNER") {
-                reqData.navigate("/admin/restaurant");
-            } else {
-                reqData.navigate("/");
-            }
-            
-            console.log("Register success", data);
+        if (data.jwt)localStorage.setItem("jwt", data.jwt);
+        if(data.role==="ROLE-RESTAURANT-OWNER"){
+            reqData.navigate("/admin/restaurant")
+
         }
-    } catch (error) {
-        dispatch({ type: REGISTER_FAILURE, payload: error.message });
-        console.log("Register error", error);
+        else{     
+          reqData.navigate("/")
+        }
+        dispatch({type:REGISTER_SUCCESS,payload:data.jwt})
+        console.log("register success",data)
     }
-};
+    catch  (error){
+        dispatch({type:REGISTER_FAILURE,payload:error})
+        console.log("error",error)
+    }
+}
 
 export const loginUser = (reqData) => async (dispatch) => {
     dispatch({ type: LOGIN_REQUEST });
     try {
         const { data } = await axios.post(`${API_URL}/auth/signin`, reqData.userData);
-        
-        if (data.jwt) {
-            localStorage.setItem("jwt", data.jwt);
-            
-            // Dispatch login success with both token and user data
-            dispatch({ 
-                type: LOGIN_SUCCESS, 
-                payload: {
-                    token: data.jwt,
-                    user: data.user // Make sure your backend returns user data
-                }
-            });
-            
-            // Fetch complete user profile after login
-            await dispatch(getUser(data.jwt));
-            
-            // Navigation based on role
-            if (data.role === "ROLE_RESTURANT_OWNER") {
-                reqData.navigate("/admin/restaurant");
-            } else {
-                reqData.navigate("/");
-            }
-            
-            console.log("Login success", data);
+        if (data.jwt)localStorage.setItem("jwt", data.jwt);
+        if(data.role==="ROLE-RESTAURANT-OWNER"){
+            reqData.navigate("/admin/restaurant")
+
         }
-    } catch (error) {
-        dispatch({ type: LOGIN_FAILURE, payload: error.message });
-        console.log("Login error", error);
+        else{     
+          reqData.navigate("/")
+        }
+        dispatch({type:LOGIN_SUCCESS,payload:data.jwt})
+        console.log("login success",data)
     }
-};
+    catch  (error){
+          dispatch({type:LOGIN_FAILURE,payload:error})
+        console.log("error",error)
+    }
+}
+
 
 export const getUser = (jwt) => async (dispatch) => {
-    dispatch({ type: GET_USER_REQUEST });
+    dispatch({ type:GET_USER_REQUEST});
     try {
-        const { data } = await api.get(`/api/users/profile`, {
-            headers: {
-                Authorization: `Bearer ${jwt}`
-            }
-        });
+        const { data } = await api.get(`/api/users/profile`,{
+           headers:{
+            Authorization:`Bearer ${jwt}`
+           }
+        })
         
-        dispatch({ 
-            type: GET_USER_SUCCESS, 
-            payload: data // Directly use the user data from response
-        });
-        
-        console.log("user profile", data);
-        return data; // Return user data for potential chaining
-    } catch (error) {
-        dispatch({ type: GET_USER_FAILURE, payload: error.message });
-        console.log("Get user error", error);
-        throw error; // Re-throw for error handling in components
+        dispatch({type:GET_USER_SUCCESS,payload:data})
+        console.log("user profile",data)
     }
-};
-
-export const addToFavorite = (jwt, restaurantId) => async (dispatch) => {
-    dispatch({ type: ADD_TO_FAVORITE_REQUEST });
-    try {
-        const { data } = await api.post(
-            `/api/restaurants/${restaurantId}/add-favorite`,
-            {},
-            {
-                headers: {
-                    Authorization: `Bearer ${jwt}`
-                }
-            }
-        );
-        
-        dispatch({ 
-            type: ADD_TO_FAVORITE_SUCCESS, 
-            payload: data // Updated favorites data
-        });
-        
-        console.log("Added to favorite", data);
-        return data;
-    } catch (error) {
-        dispatch({ type: ADD_TO_FAVORITE_FAILURE, payload: error.message });
-        console.log("Add to favorite error", error);
-        throw error;
+    catch  (error){
+          dispatch({type:GET_USER_FAILURE,payload:error})
+        console.log("error",error)
     }
-};
+}
 
-export const logout = () => (dispatch) => {
+
+export const addToFavorite = (jwt,restaurantId) => async (dispatch) => {
+    dispatch({ type:ADD_TO_FAVORITE_REQUEST});
     try {
+        const { data } = await api.put(`/api/restaurants/${restaurantId}/
+            add-favorite`,{},{
+           headers:{
+            Authorization:`Bearer ${jwt}`
+           }
+        })
+        
+        dispatch({type:ADD_TO_FAVORITE_SUCCESS,payload:data})
+        console.log("added to favorite",data)
+    }
+    catch  (error){
+          dispatch({type:ADD_TO_FAVORITE_FAILURE,payload:error})
+        console.log("error",error)
+    }
+}
+
+
+export const logout = () => async (dispatch) => {
+
+    try {
+        
         localStorage.clear();
-        dispatch({ type: LOGOUT });
-        console.log("Logout success");
-    } catch (error) {
-        console.log("Logout error", error);
+        dispatch({type:LOGOUT})
+        console.log("logout success")
     }
-};
+    catch  (error){
+        console.log("error",error)
+    }
+}
